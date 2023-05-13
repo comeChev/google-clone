@@ -8,7 +8,7 @@ export default function Home() {
       {/* Header */}
       <HomeHeader />
       {/* Body */}
-      <div className="flex flex-col items-center mt-24">
+      <div className="flex flex-col items-center mt-24 min-h-48">
         <Image
           width="300"
           height="200"
