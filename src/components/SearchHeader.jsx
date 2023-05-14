@@ -10,7 +10,7 @@ export default function SearchHeader() {
   return (
     <header className="sticky top-0 bg-white">
       <div className="flex w-full p-6 justify-between items-center">
-        <Link href="/">
+        <Link href="/" className="min-w-[120px]">
           <Image
             width="120"
             height="40"
@@ -29,7 +29,9 @@ export default function SearchHeader() {
             <RiSettings3Line className="header-icon " />
             <TbGridDots className="header-icon " />
           </div>
-          <SignInButton />
+          <div className="hidden md:flex">
+            <SignInButton />
+          </div>
         </div>
       </div>
       <SearchHeaderOptions />
