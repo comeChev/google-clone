@@ -53,8 +53,13 @@ export default function SearchForm() {
       <div className="flex items-center pl-4 space-x-2">
         <BsFillMicFill className="hidden sm:flex cursor-pointer text-blue-500 text-xl" />
         <AiOutlineSearch
-          className="cursor-pointer text-blue-500 text-2xl"
+          className={`${
+            search.trim() === ""
+              ? "text-gray-400"
+              : "text-blue-500 cursor-pointer"
+          } text-2xl`}
           onClick={handleSubmit}
+          disabled={search.trim() === ""}
         />
       </div>
     </form>
