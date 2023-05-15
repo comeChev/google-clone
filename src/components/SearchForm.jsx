@@ -38,7 +38,7 @@ export default function SearchForm() {
       <div className="flex flex-grow items-center justify-between sm:border-r-2 border-gray-300">
         <input
           className="focus:outline-none w-full"
-          placeholder="Ricerca Google o inserisci un URL"
+          placeholder="Search Google or type a URL"
           value={search}
           onChange={handleChange}
           ref={ref}

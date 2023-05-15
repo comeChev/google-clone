@@ -28,7 +28,7 @@ export default function SearchHeaderOptions() {
   const searchTerm = useSearchParams().get("searchTerm");
 
   return (
-    <div className="flex space-x-2 select-none justify-start pl-4 md:justify-start md:pl-52 text-sm text-gray-700 mb-4">
+    <div className="flex space-x-2 select-none justify-start pl-4 md:justify-start md:pl-52 text-sm text-gray-700 mb-4 pb-0.5">
       <SearchOption
         pathName={pathName}
         text="All"
