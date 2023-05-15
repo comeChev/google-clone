@@ -18,7 +18,7 @@ export default function HomeHeader() {
           target="_blank"
           className="hover:underline"
         >
-          Immagini
+          Images
         </Link>
         <TbGridDots className="bg-transparent hover:bg-gray-200 p-2 text-4xl rounded-md cursor-pointer" />
         <SignInButton />

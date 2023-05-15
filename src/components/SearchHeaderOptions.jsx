@@ -31,14 +31,14 @@ export default function SearchHeaderOptions() {
     <div className="flex space-x-2 select-none justify-start pl-4 md:justify-start md:pl-52 text-sm text-gray-700 mb-4">
       <SearchOption
         pathName={pathName}
-        text="Tutti"
+        text="All"
         Icon={AiOutlineSearch}
         searchTerm={searchTerm}
         type="web"
       />
       <SearchOption
         pathName={pathName}
-        text="Immagini"
+        text="Images"
         Icon={BiImage}
         searchTerm={searchTerm}
         type="image"

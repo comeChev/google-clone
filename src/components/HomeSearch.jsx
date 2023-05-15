@@ -28,7 +28,7 @@ export default function HomeSearch() {
   async function randomSearch() {
     setLoadingRandomSearch(true);
     const word = await fetch(
-      "https://random-word-api.herokuapp.com/word?lang=it"
+      "https://random-word-api.herokuapp.com/word?lang=en"
     )
       .then((res) => {
         if (!res.ok) {
@@ -54,7 +54,7 @@ export default function HomeSearch() {
         <input
           type="text"
           ref={ref}
-          placeholder="Ricerca Google o inserisci un URL"
+          placeholder="Search Google or type an URL"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           className="flex-grow focus:outline-none"
@@ -71,7 +71,7 @@ export default function HomeSearch() {
       </div>
       <div className="flex flex-col mt-4 space-y-2 sm:space-y-0 sm:space-x-4 sm:flex-row sm:justify-center items-center select-none">
         <button className="btn" type="submit">
-          Ricerca Google
+          Google Search
         </button>
 
         <button
@@ -82,7 +82,7 @@ export default function HomeSearch() {
           {loadingRandomSearch ? (
             <AiOutlineLoading className="text-blue-500 animate-spin text-xl" />
           ) : (
-            <span>Mi sento fortunato</span>
+            <span>I'm Feeling Lucky</span>
           )}
         </button>
       </div>
