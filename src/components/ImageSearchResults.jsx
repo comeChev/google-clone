@@ -11,22 +11,22 @@ export default function WebSearchResults({ results }) {
           <div className="flex flex-col group">
             <Link href={result.image.contextLink} className="">
               <img
-                className="h-60 group-hover:shadow-xl w-full object-contain transition-shadow mb-2"
+                className="h-60 group-hover:shadow-xl w-full object-contain transition-shadow mb-2 rounded-xl"
                 src={result.link}
                 alt={result.title}
               />
             </Link>
 
             <Link href={result.image.contextLink}>
-              <h2 className="text-xl truncate font-medium group-hover:underline decoration-blue-800 text-blue-800">
-                {result.title}
-              </h2>
-            </Link>
-
-            <Link href={result.image.contextLink}>
               <p className="text-sm text-gray-500 truncate group-hover:underline">
                 {result.displayLink}
               </p>
+            </Link>
+
+            <Link href={result.image.contextLink}>
+              <h2 className="text-xl truncate font-medium group-hover:underline decoration-blue-800 text-blue-800">
+                {result.title}
+              </h2>
             </Link>
           </div>
         </div>

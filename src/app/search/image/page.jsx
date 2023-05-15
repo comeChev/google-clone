@@ -1,7 +1,9 @@
 import ImageSearchResults from "@/components/ImageSearchResults";
+import PaginationButtons from "@/components/PaginationButtons";
 import SearchImageOptions from "@/components/SearchImageOptions";
 import { getImageBySize } from "@/utils/ApiGoogle";
 import Link from "next/link";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 const SearchResultsHeader = ({ infos }) => {
   return (
@@ -13,11 +15,19 @@ const SearchResultsHeader = ({ infos }) => {
 };
 
 export default async function ImageSearchPage({ searchParams }) {
-  const { searchTerm, size } = searchParams;
+  const { searchTerm, size, start } = searchParams;
   //await new Promise((resolve) => setTimeout(resolve, 10000));
   const imgSize = !size ? "undefined" : size;
-  const response = await getImageBySize(imgSize, searchTerm);
+  const response = await getImageBySize(imgSize, searchTerm, start);
   console.log(response);
+
+  async function getNextImages() {
+    await getImageBySize(
+      imgSize,
+      searchTerm,
+      response.queries.nextPage[0].startIndex
+    );
+  }
 
   if (!response.items) {
     return (
@@ -39,7 +49,11 @@ export default async function ImageSearchPage({ searchParams }) {
     <div className="w-full pl-4 md:pl-52 pb-24 pr-4">
       {/* <SearchImageOptions searchTerm={searchTerm} /> */}
       <SearchResultsHeader infos={response.searchInformation} />
+      {/* <InfiniteScroll dataLength={results.length} next={getNextImages}> */}
       <ImageSearchResults results={response.items} />
+      {/* </InfiniteScroll> */}
+
+      <PaginationButtons length={response.searchInformation.totalResults} />
     </div>
   );
 }

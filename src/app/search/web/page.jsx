@@ -1,4 +1,6 @@
+import PaginationButtons from "@/components/PaginationButtons";
 import WebSearchResults from "@/components/WebSearchResults";
+import { getWebResults } from "@/utils/ApiGoogle";
 import Link from "next/link";
 
 const SearchResultsHeader = ({ infos }) => {
@@ -13,15 +15,7 @@ const SearchResultsHeader = ({ infos }) => {
 export default async function WebSearchPage({ searchParams }) {
   const { searchTerm } = searchParams;
   //await new Promise((resolve) => setTimeout(resolve, 10000));
-  const response = await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_API_CONTEXT_KEY}&q=${searchTerm}`
-  ).then((res) => {
-    if (!res.ok) {
-      throw new Error("Something went wrong");
-    }
-    return res.json();
-  });
-  console.log(response);
+  const response = await getWebResults(searchTerm);
 
   if (!response.items) {
     return (
@@ -40,9 +34,10 @@ export default async function WebSearchPage({ searchParams }) {
   }
 
   return (
-    <div className="w-full pl-4 md:pl-52 pb-24">
+    <div className="pl-4 md:pl-52 pb-24">
       <SearchResultsHeader infos={response.searchInformation} />
       <WebSearchResults results={response.items} />
+      <PaginationButtons length={response.searchInformation.totalResults} />
     </div>
   );
 }

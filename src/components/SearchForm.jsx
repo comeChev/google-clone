@@ -4,10 +4,12 @@ import React, { useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsFillMicFill } from "react-icons/bs";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function SearchForm() {
   const params = useSearchParams();
+  const page = usePathname();
+  console.log(page);
   const ref = useRef(null);
   const [search, setSearch] = useState(params.get("searchTerm") || "");
   const router = useRouter();
@@ -27,7 +29,11 @@ export default function SearchForm() {
     if (!search.trim()) {
       return;
     }
-    router.push(`search/web?searchTerm=${search}`);
+    if (page === "/search/image") {
+      router.push(`/search/image?searchTerm=${search}`);
+    } else {
+      router.push(`/search/web?searchTerm=${search}`);
+    }
   };
 
   return (

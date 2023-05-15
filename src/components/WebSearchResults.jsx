@@ -6,7 +6,7 @@ export default function WebSearchResults({ results }) {
   return (
     <div>
       {results.map((result) => (
-        <div className="mb-8 max-w-xl" key={result.cacheId}>
+        <div className="mb-8 max-w-4xl" key={result.cacheId}>
           <div className="flex flex-col group">
             <Link className="text-sm text-gray-500 truncate" href={result.link}>
               {result.formattedUrl}

@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import "./globals.css";
+import ProviderTheme from "@/providers/ProviderTheme";
 
 export const metadata = {
   title: "Google Clone",
@@ -11,10 +12,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen">
-        {children}
-        {/* Footer */}
-        <Footer />
+      <body>
+        <ProviderTheme>
+          <div className="relative min-h-screen dark:text-gray-300 dark:bg-gray-800">
+            {children}
+            {/* Footer */}
+            <Footer />
+          </div>
+        </ProviderTheme>
       </body>
     </html>
   );
