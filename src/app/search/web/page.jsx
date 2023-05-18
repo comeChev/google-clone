@@ -13,9 +13,9 @@ const SearchResultsHeader = ({ infos }) => {
 };
 
 export default async function WebSearchPage({ searchParams }) {
-  const { searchTerm } = searchParams;
+  const { searchTerm, start } = searchParams;
   //await new Promise((resolve) => setTimeout(resolve, 10000));
-  const response = await getWebResults(searchTerm);
+  const response = await getWebResults(searchTerm, start);
 
   if (!response.items) {
     return (

@@ -9,7 +9,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 export default function SearchForm() {
   const params = useSearchParams();
   const page = usePathname();
-  console.log(page);
   const ref = useRef(null);
   const [search, setSearch] = useState(params.get("searchTerm") || "");
   const router = useRouter();
